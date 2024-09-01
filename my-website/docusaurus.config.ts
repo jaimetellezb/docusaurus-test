@@ -67,8 +67,8 @@ const config: Config = {
     image: 'img/docusaurus-social-card.jpg',
     // 
     algolia: {
-      appId: '',
-      apiKey: '',
+      appId: 'ALA1PUEV1E',
+      apiKey: '1b1465e49deea8215de14f1194ba4a4e',
       indexName: 'Search',
 
     },
