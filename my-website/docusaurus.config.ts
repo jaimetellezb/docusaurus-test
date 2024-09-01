@@ -1,40 +1,6 @@
-# docusaurus-test
-Prueba de Docusaurus para un sitio web
-
-## Instalación 
-Ejecutar los siguientes comandos para instalar y crear un proyecto con Docusaurus.
-
-```bash
-npx create-docusaurus@latest site1 classic
-npx create-docusaurus@latest my-website classic --typescript
-npm install
-cd site1
-npm install
-```
-
-## Estructura del proyecto
-
-```txt
-site1/
-├── blog/
-├── docs/
-├── src/
-│   ├── components/
-│   ├── css/
-│   └── pages/
-├── static/
-├── docusaurus.config.js
-├── sidebars.js
-└── package.json
-```
-
-
-## Config por defecto
-
-```ts
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type { Config } from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
   title: 'My Site',
@@ -99,23 +65,68 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    // 
+    algolia: {
+      appId: '',
+      apiKey: '',
+      indexName: 'Search',
+
+    },
+    // navbar: {
+    //   title: 'My Site',
+    //   logo: {
+    //     alt: 'My Site Logo',
+    //     src: 'img/logo.svg',
+    //   },
+    //   items: [
+    //     {
+    //       type: 'docSidebar',
+    //       sidebarId: 'tutorialSidebar',
+    //       position: 'left',
+    //       label: 'Tutorial',
+    //     },
+    //     { to: '/blog', label: 'Blog', position: 'left' },
+    //     {
+    //       href: 'https://github.com/facebook/docusaurus',
+    //       label: 'GitHub',
+    //       position: 'right',
+    //     },
+    //   ],
+    // },
     navbar: {
-      title: 'My Site',
+      title: 'Mi Sitio',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          label: 'Inicio',
+          to: '/',
           position: 'left',
-          label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          label: 'Documentación',
+          position: 'left',
+          items: [
+            {
+              label: 'Guía de Inicio',
+              to: 'docs/intro',
+            },
+            // {
+            //   label: 'API Reference',
+            //   to: 'docs/api',
+            // },
+          ],
+        },
+        {
+          label: 'Blog',
+          to: 'blog',
+          position: 'right',
+        },
+        {
           label: 'GitHub',
+          href: 'https://github.com/tu-repositorio',
           position: 'right',
         },
       ],
@@ -164,13 +175,15 @@ const config: Config = {
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+
     },
+
   } satisfies Preset.ThemeConfig,
 };
 
 export default config;
-```
